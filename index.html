@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop Watch</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Stop Watch</h1>
+    <div id="timer"></div>
+    <div class="buttons"><button id="start_button"">START</button>
+        <button id="pause_button">PAUSE</button>
+        <button id="clear_button"">CLEAR</button></div>
+    
+
+    <script>
+        var startButton = document.getElementById("start_button");
+        var pauseButton = document.getElementById("pause_button");
+        var clearButton = document.getElementById("clear_button");
+        var start;
+        startButton.onclick = function(){
+            start = setInterval(stopWatch,1000);
+            startButton.style.display = "none";
+            pauseButton.style.display = "flex";
+            clearButton.style.display = "flex";
+        }
+        pauseButton.onclick = function(){
+            clearTimeout(start);
+            startButton.style.display = "flex";
+            pauseButton.style.display = "none";
+            clearButton.style.display = "flex";
+        }
+        clearButton.onclick = function(){
+            set0();
+            startButton.style.display = "flex";
+            pauseButton.style.display = "none";
+            clearButton.style.display = "none";
+        }
+
+
+      var s = 0,
+        m = 0,
+        h = 0;
+      document.getElementById("timer").innerHTML =
+         h + " : " +  m + " : " +  s;
+      function set0() {
+        s = 0;
+        m = 0;
+        h = 0;
+        clearInterval(start);
+        document.getElementById("timer").innerHTML =
+           h + " : " +  m + " : " +  s;
+      }
+      function stopWatch() {
+        if (s == 60) {
+          m = m + 1;
+          s = 0;
+          if (m == 60) {
+            h = h + 1;
+            m = 0;
+          }
+        }
+        // s = checkTime(s);
+        // m = checkTime(m);
+        // h = checkTime(h);
+        document.getElementById("timer").innerHTML = h + " : " + m + " : " + s;
+        s++;
+      }
+      // function checkTime(i) {
+      //   var number = i; // Example number with leading zero
+      //   var numberString = number.toString(); // Convert the number to a string
+      //   var numberOfDigits = numberString.length; // Get the length of the string
+      //   console.log(number + " " + numberString + " " + numberOfDigits);
+      //   if (i < 10 && numberOfDigits < 2) {
+      //     i = "0" + i;
+      //     console.log("i= " + i);
+      //   }
+      //   return i;
+      // }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+body{
+    margin: 20px auto;
+    text-align: center;
+}
+#timer{
+    height:30px;
+    width:120px;
+    margin: 30px auto;
+    background-color: aqua;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+#start_button{
+    display: block;
+    margin:20px;
+}
+#pause_button, #clear_button{
+    display: none;
+    margin:20px;
+}
+.buttons{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
